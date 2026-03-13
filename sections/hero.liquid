@@ -5,9 +5,9 @@
   {% endif %}
 
   <div class="container z-10" style="text-align:center;display:flex;flex-direction:column;align-items:center;padding-top:6rem;padding-bottom:4rem">
-    {% if section.settings.logo_image %}
+    {% if section.settings.logo_image != blank %}
       <img src="{{ section.settings.logo_image | image_url: width: 512 }}" alt="{{ shop.name }}" class="hero-logo">
-    {% elsif shop.brand.logo %}
+    {% elsif shop.brand.logo != blank %}
       <img src="{{ shop.brand.logo | image_url: width: 512 }}" alt="{{ shop.name }}" class="hero-logo">
     {% else %}
       <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" class="hero-logo">

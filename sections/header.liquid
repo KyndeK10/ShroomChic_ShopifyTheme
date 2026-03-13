@@ -2,8 +2,8 @@
 <nav class="site-header">
   <div class="container header-inner">
     <a href="/" class="header-logo">
-      {% if section.settings.logo %}
-        <img src="{{ section.settings.logo | image_url: width: 96 }}" alt="{{ shop.name }}">
+      {% if section.settings.logo != blank %}
+        <img src="{{ section.settings.logo | image_url: width: 96 }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
       {% else %}
         <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
       {% endif %}
