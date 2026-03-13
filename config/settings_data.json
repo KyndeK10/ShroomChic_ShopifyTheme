@@ -25,6 +25,7 @@
       "header": {
         "type": "header",
         "settings": {
+          "logo": "shopify://shop_images/Purple_Goom.png",
           "logo_text": "Shroom Chic Creations"
         }
       },
