@@ -1,11 +1,11 @@
 <!-- Header Section -->
 <nav class="site-header">
   <div class="container header-inner">
-    <a href="/" class="header-logo">
+    <a href="{{ routes.root_url }}" class="header-logo">
       {% if section.settings.logo != blank %}
-        <img src="{{ section.settings.logo | image_url: width: 96 }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
+        <img src="{{ section.settings.logo | image_url: width: 96 }}" alt="{{ section.settings.logo.alt | default: shop.name }}" width="96" height="{{ 96 | divided_by: section.settings.logo.aspect_ratio | round }}">
       {% else %}
-        <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+        <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" width="96" height="96">
       {% endif %}
       <span class="header-logo-text gradient-text">{{ section.settings.logo_text | default: shop.name }}</span>
     </a>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="header-actions">
-      <a href="/cart" class="cart-link" aria-label="Cart">
+      <a href="{{ routes.cart_url }}" class="cart-link" aria-label="Cart">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
         {% if cart.item_count > 0 %}
           <span class="cart-badge">{{ cart.item_count }}</span>
@@ -39,7 +39,7 @@
         <a href="{{ block.settings.link }}" class="nav-link">{{ block.settings.label }}</a>
       {% endif %}
     {% endfor %}
-    <a href="/cart" class="cart-link-mobile">
+    <a href="{{ routes.cart_url }}" class="cart-link-mobile">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
       Cart ({{ cart.item_count }})
     </a>
